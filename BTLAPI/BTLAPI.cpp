@@ -55,7 +55,7 @@ int exist = 0;
 BOOLEAN isDraw = false;
 BOOLEAN isClick = false;
 int start = 0;
-
+//Bat dau sua 
 HPEN hPenCurCol,hPenCurBorCol;
 HBRUSH hBrushCurCol, hBrushCurBorCol;
 HWND hwndCurCol,hwndTextBox[10],hwndTools,btnText;
