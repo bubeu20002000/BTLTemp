@@ -13,21 +13,14 @@
 #include <CommCtrl.h>
 #include "minwinbase.h"
 #include "ReadFile.h"
+//Bat dau sua lan 1
 #include "olectl.h"
 #include <wingdi.h>
-//#include "RichEdit.h"
-//#include "gdiplusheaders.h"
-//#include "gdiplusgraphics.h"
 
-#include <gdiplus.h>
-using namespace Gdiplus;
-//bd sua 1
-#pragma comment(lib,"gdiplus.lib")
-
-//ket thuc sua 1
 #define MAX_LOADSTRING 100
 #define ID_TEXT 420
 #define ID_TEXTBOX 69420
+//Ket thuc sua lan 1
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
@@ -55,7 +48,8 @@ int exist = 0;
 BOOLEAN isDraw = false;
 BOOLEAN isClick = false;
 int start = 0;
-//Bat dau sua 
+
+//Bat dau sua lan 2
 HPEN hPenCurCol,hPenCurBorCol;
 HBRUSH hBrushCurCol, hBrushCurBorCol;
 HWND hwndCurCol,hwndTextBox[10],hwndTools,btnText;
@@ -67,6 +61,9 @@ COLORREF Colortem[10];
 BOOLEAN isTyping = false;
 int iTextBox=0;
 int countTextBox;
+int fontSize;
+TCHAR buff[1024];
+//Ket thuc sua lan 2
 
 HDC temp_hdc;
 HWND temp_hWnd;
@@ -116,9 +113,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: Place code here.
-	GdiplusStartupInput gpStartupInput;
-	ULONG_PTR gpToken;
-	GdiplusStartup(&gpToken, &gpStartupInput, NULL);
+	
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_BTLAPI, szWindowClass, MAX_LOADSTRING);
@@ -143,7 +138,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
-	GdiplusShutdown(gpToken);
+	
     return (int) msg.wParam;
 }
 
@@ -244,6 +239,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     switch (message)
     {
+	//Bat dau sua lan 3
 	case WM_CTLCOLOREDIT:
 	{
 		//for (int item = 0; item < iTextBox; item++) {
@@ -268,6 +264,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	}
 	break;
+	//Ket thuc sua lan 3
 	case WM_SIZE: //khi kích thước cửa sổ chính của chương trình thay đổi mới chạy vào phần này, khi mới chạy chương trình cũng nhảy vào đây
 	{
 		DrawInline(hbrushMaunut, hWnd, color);
@@ -299,7 +296,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 		}
 		//16-25
+		//Bat dau sua lan 4 (chinh kich co window)
 		hwndGroupBox[1] = CreateWindow(TEXT("BUTTON"), TEXT(""), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 5, 5, 1320, 160, hWnd, (HMENU)(17), NULL, NULL);
+		//Ket thuc sua lan 4
 		for (i = 2;i < 4;i++) {
 			hwndGroupBox[i] = CreateWindow(TEXT("BUTTON"), labelGroup[i - 2], WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 180 + (i - 2) * 230, 20, 225, 130, hWnd, (HMENU)(i + 16), NULL, NULL);
 		}
@@ -318,13 +317,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		//59
 		//hwndCurrentSize = CreateWindow(TEXT("button"), TEXT(""), WS_VISIBLE | WS_CHILD | BS_GROUPBOX, 1070, 20, 50, 130, hWnd, (HMENU)(59), NULL, NULL);
 		
-		//Tao groupbox cho mau dang chon
+		//Bat dau sua lan 5 (Tao groupbox cho mau dang chon,groupbox text,nut Text)
 		hwndCurCol = CreateWindow(TEXT("button"), TEXT("CURRENT COLOR"), WS_CHILD | WS_VISIBLE | BS_GROUPBOX,965,20,150,130,hWnd,(HMENU)NULL,NULL,NULL);
 		hwndTools = CreateWindow(TEXT("button"), TEXT("TOOLS"), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 1120, 20, 200, 130, hWnd, (HMENU)NULL, NULL, NULL);
 		btnText= CreateWindow(TEXT("BUTTON"), TEXT("T"), WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, 1130,40,35,35, hWnd, (HMENU)ID_TEXT, NULL, NULL);
-		//Tao Font
-		
-		//hFont = CreateFont(20, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, L"Arial");
+		//Ket thuc sua lan 5
+
 		/*hwndTextBox = CreateWindow(TEXT("edit"), TEXT(""), WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE,300,300,150,130,hWnd,(HMENU)NULL,NULL,NULL);*/
 		hwndDrawArea = CreateWindow(TEXT("static"), TEXT("DRAW"), WS_VISIBLE | WS_CHILD | SS_GRAYFRAME | BS_BITMAP, 5, 165, 962, 340, hWnd, (HMENU)ID_DRAW_AREA, NULL, NULL);
 		//26-36
@@ -704,6 +702,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				InvalidateRect(hWnd, NULL, FALSE);
 				break;
 			}
+			//Bat dau sua lan 6
 			case ID_OPTION_TEXT:
 				//if (!isTyping) {
 				//	isTyping = true;
@@ -740,6 +739,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				cf.hwndOwner = hWnd;
 				cf.lpLogFont = &lf;
 				cf.rgbColors = g_rgbText;
+				cf.iPointSize = fontSize;
 
 				if (ChooseFont(&cf))
 				{
@@ -794,6 +794,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				
 			}
 				break;
+			//Ket thuc sua lan 6
 			case ID_FILE_SAVE:
 				ExportImage();
 				break;
@@ -846,6 +847,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		yTop = HIWORD(lParam);
 		isClick = true;
 
+		//Bat dau sua lan 7
 		//LoadLibrary(TEXT("Msftedit.dll"));
 		if (isTyping) { //&& countTextBox==1
 			//WS_SIZEBOX
@@ -861,6 +863,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			MessageBox(hWnd, TEXT("Chỉ được tồn tại 1 ô text"), TEXT("Thông báo"), MB_OK);
 		}*/
 		//ReleaseDC(hWnd, hdc);
+		//Ket thuc sua lan 7
 		break;
 	case WM_LBUTTONUP:
 	{
@@ -946,7 +949,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
 			PAINTSTRUCT ps;
 			HDC hdc = BeginPaint(hWnd, &ps);
-			
+			TCHAR text[256];
+			//Bat dau sua lan 8
 			hPenCurCol = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
 			hPenCurBorCol = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
 			hBrushCurCol = CreateSolidBrush(currentMauNen);
@@ -956,6 +960,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			SelectObject(hdc, hPenCurCol);
 			SelectObject(hdc, hBrushCurCol);
 			TextOutA(hdc,970,110,"Background  Border",19);
+			
 			//TextOutA(hdc,300,300,"Background  Border",19);
 			/*GetWindowRect(hWnd, &rect);
 			DrawTextA(hdc,"Background", 12,&rect, DT_CALCRECT);*/
@@ -964,7 +969,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			SelectObject(hdc, hPenCurBorCol);
 			SelectObject(hdc, hBrushCurBorCol);
 			Rectangle(hdc, 1050, 50, 1100, 100);
-
+			//Ket thuc sua lan 8
 			EndPaint(hWnd, &ps);
 			/*HDC hdcDraw = BeginPaint(hwndDrawArea, &ps);
 			Gdiplus::Graphics gf(hdcDraw);
@@ -1562,20 +1567,20 @@ void OnMouseMove(HWND hwnd, int x, int y, UINT keyFlags)
 }
 
 
-HBITMAP GetHBITMAPFromImageFile(WCHAR* pFilePath)
-{
-	GdiplusStartupInput gpStartupInput;
-	ULONG_PTR gpToken;
-	GdiplusStartup(&gpToken, &gpStartupInput, NULL);
-	HBITMAP result = NULL;
-	Gdiplus::Bitmap* bitmap = Gdiplus::Bitmap::FromFile(pFilePath, false);
-	if (bitmap)
-	{
-		bitmap->GetHBITMAP(Color(0, 0, 0), &result);
-		delete bitmap;
-	}
-	GdiplusShutdown(gpToken);
-	return result;
-}
+//HBITMAP GetHBITMAPFromImageFile(WCHAR* pFilePath)
+//{
+//	GdiplusStartupInput gpStartupInput;
+//	ULONG_PTR gpToken;
+//	GdiplusStartup(&gpToken, &gpStartupInput, NULL);
+//	HBITMAP result = NULL;
+//	Gdiplus::Bitmap* bitmap = Gdiplus::Bitmap::FromFile(pFilePath, false);
+//	if (bitmap)
+//	{
+//		bitmap->GetHBITMAP(Color(0, 0, 0), &result);
+//		delete bitmap;
+//	}
+//	GdiplusShutdown(gpToken);
+//	return result;
+//}
 
 
