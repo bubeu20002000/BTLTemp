@@ -155,8 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="BTLAPI.ico" />
-    <Image Include="C:\Users\ngoth\Downloads\images\mainjava.png" />
-    <Image Include="C:\Users\ngoth\Downloads\images\mirage-b-site.jpg" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

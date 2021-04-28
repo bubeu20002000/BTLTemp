@@ -51,11 +51,5 @@
     <Image Include="BTLAPI.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="C:\Users\ngoth\Downloads\images\mirage-b-site.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="C:\Users\ngoth\Downloads\images\mainjava.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

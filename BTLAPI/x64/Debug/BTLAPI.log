@@ -1,25 +1,25 @@
 ﻿  BTLAPI.cpp
 D:\BTLAPI\BTLAPI\SaveFile.h(42,37): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(305,1): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(319,22): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(321,21): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(323,21): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(329,29): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(353,20): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(353,20): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(354,21): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(354,21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(357,23): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(367,17): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(368,18): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(774,25): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(862,19): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(898,1): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(911,17): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(925,6): warning C4554: '|': check operator precedence for possible error; use parentheses to clarify precedence
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(925,91): warning C4554: '|': check operator precedence for possible error; use parentheses to clarify precedence
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(240,10): warning C4101: 'hbrush': unreferenced local variable
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(374,8): warning C4101: 'rectStatusBar': unreferenced local variable
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(1593,16): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
-D:\BTLAPI\BTLAPI\BTLAPI.cpp(1593,35): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(309,1): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(323,22): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(325,21): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(327,21): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(333,29): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(357,20): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(357,20): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(358,21): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(358,21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(361,23): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(371,17): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(372,18): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(778,25): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(866,19): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(902,1): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(915,17): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(929,6): warning C4554: '|': check operator precedence for possible error; use parentheses to clarify precedence
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(929,91): warning C4554: '|': check operator precedence for possible error; use parentheses to clarify precedence
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(244,10): warning C4101: 'hbrush': unreferenced local variable
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(378,8): warning C4101: 'rectStatusBar': unreferenced local variable
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(1602,16): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
+D:\BTLAPI\BTLAPI\BTLAPI.cpp(1602,35): warning C4805: '==': unsafe mix of type 'BOOLEAN' and type 'bool' in operation
   BTLAPI.vcxproj -> D:\BTLAPI\x64\Debug\BTLAPI.exe

@@ -16,10 +16,7 @@
 //Bat dau sua lan 1
 #include "olectl.h"
 #include <wingdi.h>
-#include <tchar.h>
-#include <atlstr.h>
-#include <cstdlib>
-#include <comdef.h>
+#include <gdiplus.h>
 
 #define MAX_LOADSTRING 100
 #define ID_TEXT 420
@@ -118,6 +115,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+	// Initialize GDI+
+	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+	ULONG_PTR gdiplusToken;
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, nullptr);
+
+	
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
@@ -147,8 +150,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
-	
+	Gdiplus::GdiplusShutdown(gdiplusToken);
     return (int) msg.wParam;
+
 }
 
 //
@@ -1537,6 +1541,7 @@ void OpenImage() {
 	OPENFILENAME ofn;
 	WCHAR szFilePath[MAX_PATH] = L"";
 	WCHAR szFileTitle[MAX_PATH] = L"";
+	HDC hdc2 = GetDC(hwndDrawArea);
 
 	ZeroMemory(&ofn, sizeof(ofn));
 
@@ -1559,7 +1564,11 @@ void OpenImage() {
 		isOpenFile = true;
 		
 		OpenBitmapByFileName(openFilename);
+		Gdiplus::Graphics gf(hdc2);
+		Gdiplus::Bitmap bmp(szFilePath);
+		gf.DrawImage(&bmp, 0, 0);
 	}
+	ReleaseDC(hwndDrawArea, hdc2);
 }
 void OpenBitmapByFileName(wstring openFilename) {
 	HBITMAP       hBitmap, hOldBitmap;
@@ -1609,23 +1618,6 @@ void OnMouseMove(HWND hwnd, int x, int y, UINT keyFlags)
 	swprintf_s(buffer, 15, L"%d x %d", x, y);
 	SendMessage(hwndStatusBar, SB_SETTEXT, 1, (LPARAM)buffer);
 }
-
-
-//HBITMAP GetHBITMAPFromImageFile(WCHAR* pFilePath)
-//{
-//	GdiplusStartupInput gpStartupInput;
-//	ULONG_PTR gpToken;
-//	GdiplusStartup(&gpToken, &gpStartupInput, NULL);
-//	HBITMAP result = NULL;
-//	Gdiplus::Bitmap* bitmap = Gdiplus::Bitmap::FromFile(pFilePath, false);
-//	if (bitmap)
-//	{
-//		bitmap->GetHBITMAP(Color(0, 0, 0), &result);
-//		delete bitmap;
-//	}
-//	GdiplusShutdown(gpToken);
-//	return result;
-//}
 
 
 

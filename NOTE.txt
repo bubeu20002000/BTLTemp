@@ -22,8 +22,10 @@ Nam
 
 Note 
 -Thêm : 
+#include <gdiplus.h>
 #define ID_COLORTEXT 421
 #define ID_COLORBKTEXT 422
+
 
 HPEN hPenCurColText,hPenCurColorBkText = dòng 59
 HBRUSH hBrushCurColText,hBrushCurColBkText = dòng 60
@@ -35,6 +37,14 @@ COLORREF Colortem[10]; = dòng 68
 COLORREF ColorBKtem[10]; = dòng 69
 int fontSize; = dòng 73
 char buff[100]; = dòng 74
+
+từ dòng 119 đến 121
+// Initialize GDI+
+	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+	ULONG_PTR gdiplusToken;
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, nullptr);
+dòng 153
+Gdiplus::GdiplusShutdown(gdiplusToken);
 
 từ dòng 248 đến 252:
 COLORREF  acrCustClrText[16];
@@ -108,3 +118,14 @@ từ 1013 đến 1020
 			SelectObject(hdc, hPenCurColorBkText);
 			SelectObject(hdc, hBrushCurColBkText);
 			Rectangle(hdc, 1260, 145, 1310, 110);
+
+dòng 1544
+HDC hdc2 = GetDC(hwndDrawArea);
+
+từ dòng 1567 đến 1569
+Gdiplus::Graphics gf(hdc2);
+Gdiplus::Bitmap bmp(szFilePath);
+gf.DrawImage(&bmp, 0, 0);
+
+dòng 1571
+ReleaseDC(hwndDrawArea, hdc2); //Cái này ở ngoài ngoặc
