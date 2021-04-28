@@ -17,3 +17,94 @@ Bổ sung thêm:
 
 6. Chọn từng điểm để vẽ hình rồi nối 
 
+==============================================================
+Nam
+
+Note 
+-Thêm : 
+#define ID_COLORTEXT 421
+#define ID_COLORBKTEXT 422
+
+HPEN hPenCurColText,hPenCurColorBkText = dòng 59
+HBRUSH hBrushCurColText,hBrushCurColBkText = dòng 60
+HWND hwndFontsize, btnColorBkText, btnColorText = dòng 61
+
+static COLORREF currentColorText = RGB(0, 0, 0); = dòng 66
+static COLORREF currentColorBKText = RGB(255,255,255); = dòng 67
+COLORREF Colortem[10]; = dòng 68
+COLORREF ColorBKtem[10]; = dòng 69
+int fontSize; = dòng 73
+char buff[100]; = dòng 74
+
+từ dòng 248 đến 252:
+COLORREF  acrCustClrText[16];
+int newColorText = 0;
+COLORREF  acrCustClrBKText[16];
+int newColorBKText = 0;
+
+từ dòng 274 đến 257:
+SetBkColor((HDC)wParam, ColorBKtem[item]);
+SetBkMode((HDC)wParam, OPAQUE);
+
+từ dòng 340 đến 342
+hwndFontsize = CreateWindow(TEXT("static"), TEXT(""), WS_CHILD | WS_VISIBLE , 1130, 75, 140, 35, hWnd, (HMENU)NULL, NULL, NULL);
+btnColorBkText = CreateWindow(TEXT("BUTTON"), TEXT("Màu nền chữ"), WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, 1130, 110, 130, 35, hWnd, (HMENU)ID_COLORBKTEXT, NULL, NULL);
+btnColorText = CreateWindow(TEXT("BUTTON"), TEXT("Màu chữ"), WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, 1170, 40, 90, 35, hWnd, (HMENU)ID_COLORTEXT, NULL, NULL);
+
+từ dòng 802 đến 837
+			case ID_COLORTEXT:
+			{
+				ZeroMemory(&cc, sizeof(CHOOSECOLOR));
+				cc.lStructSize = sizeof(CHOOSECOLOR);
+				cc.hwndOwner = hWnd;
+				cc.lpCustColors = (LPDWORD)acrCustClrText;
+				cc.Flags = CC_FULLOPEN | CC_RGBINIT;
+				if (ChooseColor(&cc))
+				{
+					acrCustClrText[newColorText] = cc.rgbResult;
+					newColorText++;
+					currentColorText = cc.rgbResult;
+					/*hBrushHinh = CreateSolidBrush(currentMauNen);*/
+				}
+				InvalidateRect(hWnd, NULL, FALSE);
+				ReleaseDC(hWnd, hdc);
+				break;
+			}
+			case ID_COLORBKTEXT:
+			{
+				ZeroMemory(&cc, sizeof(CHOOSECOLOR));
+				cc.lStructSize = sizeof(CHOOSECOLOR);
+				cc.hwndOwner = hWnd;
+				cc.lpCustColors = (LPDWORD)acrCustClrText;
+				cc.Flags = CC_FULLOPEN | CC_RGBINIT;
+				if (ChooseColor(&cc))
+				{
+					acrCustClrBKText[newColorBKText] = cc.rgbResult;
+					newColorBKText++;
+					currentColorBKText = cc.rgbResult;
+					/*hBrushHinh = CreateSolidBrush(currentMauNen);*/
+				}
+				InvalidateRect(hWnd, NULL, FALSE);
+				ReleaseDC(hWnd, hdc);
+				break;
+			}
+dòng 895
+ColorBKtem[iTextBox] = currentColorBKText;
+
+từ dòng 997 đến 998
+hPenCurColText = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
+hPenCurColorBkText = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
+
+từ 1001 đến 1002
+hBrushCurColText = CreateSolidBrush(currentColorText);
+hBrushCurColBkText = CreateSolidBrush(currentColorBKText);
+
+từ 1013 đến 1020
+			//Mau chu
+			SelectObject(hdc, hPenCurColText);
+			SelectObject(hdc, hBrushCurColText);
+			Rectangle(hdc, 1260, 40, 1310, 75);
+			//Mau nen chu
+			SelectObject(hdc, hPenCurColorBkText);
+			SelectObject(hdc, hBrushCurColBkText);
+			Rectangle(hdc, 1260, 145, 1310, 110);
